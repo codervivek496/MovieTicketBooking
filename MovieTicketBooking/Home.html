@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                "url": "GetMovieImg.aspx",
+                "type": "html",
+                "method": "get",
+                success: function (response) {
+                    var res = JSON.parse(response);
+                    var str = '<center><h1 style="border-bottom:4px solid black">SELECT  THE  MOVIE</h1></center><br/<br/><br/><br/><table><marquee><tr>'
+                    $.each(res, function (a, b) {
+                        str += '<td><a href = "seat.html" ><input type="image" id="image" src="' + b.MOVIEIMAGE + '" height="300" width="300" id="' + b.MOVIENAME + '" /></a ></td >'
+
+
+
+                    })
+                    str += '</tr></marquee></table></center>'
+                    document.write(str);
+                }
+            });
+        });
+        
+    </script>
+    </div>
+
+</body>
+</html>
